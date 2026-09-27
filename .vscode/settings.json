@@ -1,0 +1,19 @@
+{
+	"nix.enableLanguageServer": true,
+	"nix.serverPath": "nixd",
+	"nix.serverSettings": {
+		"nixd": {
+			"formatting": {
+				"command": ["nixfmt"]
+			}
+		},
+		"nixpkgs": {
+			"expr": "import (builtins.getFlake (builtins.toString ./.)).inputs.nixpkgs { }"
+		},
+		"options": {
+			"nixos-hardware": {
+				"expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.rpi5.options"
+			}
+		}
+	}
+}
